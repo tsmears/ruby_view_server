@@ -2,10 +2,31 @@
 <p>
   The time is meow:
   <%= Time.now %>
+  
+
 </p>
 
 <p>
   My Name is:
   <%= @name %>
+
+  <%= @request.query.inspect %>
+
+  <form method='post' action="<%= @request.path %>">
+        First name: <input type="text" name="first_name" placeholder='first name'/><br />
+        <input type="submit" value="Submit" />
+    </form>
+
+   <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+   	Hello there <%= @request.query['first_name'] %>
+
+   <% else %>
+   Enter your name
+   <% end %>
+
+   <form>
+		<input type="radio" name="sex" value="male">Male<br>
+		<input type="radio" name="sex" value="female">Female
+	</form>
 </p>
 
